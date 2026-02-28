@@ -11,8 +11,8 @@ import com.paypal.base.rest.PayPalRESTException;
 
 public class PaymentService {
 
-	private static final String CLIENT_ID = "AWeHaIGkHtPDljIQKeKI8udQ_znhUUK1bGmTvpdkGKqW-c4pkeh-4lu-OWJKFw0uiwLCdwys6_aTD89d";
-	private static final String CLIENT_SECRET = "EEIxsPCms-kOHkcndm6tLV5aGPE2Ge71W1cEjNXBg-wixUqDxX2SqKpqifVa12awxzBR5u1cpyoGqcyV";
+	private static final String CLIENT_ID = "-c4pkeh-4lu-";
+	private static final String CLIENT_SECRET = "-wixUqDxX2SqKpqifVa12awxzBR5u1cpyoGqcyV";
 	private static final String MODE = "sandbox";
 
 	public String authorizePayment(Order order,double amount) throws PayPalRESTException {
