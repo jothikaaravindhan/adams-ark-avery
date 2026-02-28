@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+   
+<h:head>
+	<title>Pet Instructions Page</title>
+	<h:outputStylesheet library="css" name="petInstructions.css"/>
+</h:head>
+
+<h:body>
+	
+	<h:graphicImage library="images" name="logo.png" alt="Adam's Ark &amp; Avery" styleClass="heroLogo"/>
+	<div class="sideBar">
+    		<ul>
+	    		<li><h:link value="Home" outcome="staff.xhtml"/></li>
+	    		<li><h:link value="Calendar" outcome="viewFeeding.xhtml"/></li>
+	    		<li><h:link value="viewPets" outcome="viewPets.xhtml"/></li>
+	    		<li><A href="">Settings</A></li>
+				<li><ui:include src="/WEB-INF/includes/logoutButton.xhtml"/></li>
+	    	</ul>
+    </div>
+	<div class="instructions">
+	<h1>Pet Instructions</h1>
+		<p>Please select pet type</p>
+		<h:form id="form">
+			<h:messages id="msgs" />
+
+		  <h:selectOneMenu id="petType" value="#{instructionsBean.petType}"
+		                   required="true" requiredMessage="Pet type is required">
+		    
+		    <f:selectItem itemLabel="Dog" itemValue="Dog"/>
+		    <f:selectItem itemLabel="Cat" itemValue="Cat"/>
+		    <f:selectItem itemLabel="Bird" itemValue="Bird"/>
+		    <f:selectItem itemLabel="Reptile" itemValue="Reptile"/>
+		    <f:selectItem itemLabel="Exotic Pet" itemValue="Exotic"/>
+		    <f:selectItem itemLabel="Fish" itemValue="Fish"/>
+		    <f:selectItem itemLabel="Amphibian" itemValue="Amphibian"/>
+		    <f:selectItem itemLabel="Small mammal" itemValue="Small"/>
+		   
+		    <f:ajax execute="@this" render="instructionsOutput msgs"/>
+		  </h:selectOneMenu>
+
+			
+			<h1>1. Universal Visit Flow (every visit)</h1>
+			<p><b>On arrival</b> <br />
+				Wash/sanitize hands first and between species/enclosures.<br />	
+				Count pets, confirm all present and safe.<br />
+				Quick home scan: temperature, open windows, hazards, plants/chemicals, chewed cords.<br />
+				Fresh water for all species.<br />
+				<b>During visit</b><br />
+				Feed per species below and Owner Notes.<br />
+				Litter/spot clean, outdoor potty as applicable.<br />
+				Enrichment/play/social time per species.<br />
+				Medication per Owner Notes (verify dose/time, log immediately).<br />
+				<b>Before leaving</b><br />	
+				Final headcount; secure doors/gates/tanks/cages.<br />
+				Lights/heaters/filters back on; timers correct.<br />
+				Write the Daily Report (see template).</p>
+			
+			<h1>2. Species-Specific Care</h1>
+			<h:outputText id="instructionsOutput" 
+			              value="#{instructionsBean.instructions}" 
+			              escape="false"/>
+			       
+			<h1>3. Cleaning and Sanitation</h1>
+			<p>Separate tools by species (color-code if provided).<br />
+				Food prep surfaces: wash, rinse, disinfect; air-dry.<br />		
+				Litter/feces: seal in bags; place in [BIN LOCATION].<br />		
+				Aquariums/terrariums: never use soap inside; use species-safe products only.<br />		
+				Launder pet towels/blankets per Owner Notes or bag them for owner.</p>
+				
+			<h1>4. Medications</h1>
+			<p>Pet: [NAME] • Drug: [NAME] • Dose: [X mg/ml] • Route: [PO/topical/otic/ophthalmic]<br />
+				Timing: [AM/PM/WITH FOOD] • Special: [SHAKE/KEEP REFRIGERATED]<br />
+				Two-person check if possible (read-back dose). Log immediately after giving.</p>
+			
+			<h1>5. Emergency Protocol</h1>
+			<p>Assess: Is the pet in immediate danger? Secure others.<br />
+				1. Contact: Call owner → if no answer in 2–3 minutes and it’s urgent, call emergency vet.<br />
+				2. Stabilize: Keep warm/cool as appropriate, limit movement, stop bleeding with clean pressure, avoid feeding.<br />
+				3. Transport: Use carrier/leash; bring meds list.<br />
+				4. Document: Time line, observations, photos, what you did.</p>
+			
+			<h1>6. Daily Report Template</h1>
+			<p>Date/Time in–out: [HH:MM–HH:MM]<br />
+				Pets seen headcount: [NAMES] (all accounted for)	<br />
+				Food/Water: [WHAT/HOW MUCH], appetite [GOOD/FAIR/REFUSED]	<br />			
+				Bathroom/Litter: [NOTES—consistency, frequency]				<br />
+				Enrichment/Walks/Play: [WHAT/ DURATION]	<br />			
+				Meds given: [YES/NO—DETAILS]				<br />
+				Cleaning done: [LITTER/BOWLS/SPOT CLEAN]<br />				
+				Behavior/Health notes: [ANY RED FLAGS?]	<br />			
+				Home status: [SECURED/ALARM SET/DELIVERIES INSIDE]	<br />			
+				Photos: [ATTACHED Y/N]				<br />
+				Next visit: [DATE/TIME]</p>
+	</h:form>
+	</div>
+</h:body>
+</html>

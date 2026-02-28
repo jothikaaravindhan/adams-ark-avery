@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <title>Home - Adam's Ark &amp; Avery</title>
+    <h:outputStylesheet library="css" name="home.css"/>
+    <!-- optional: your font -->
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&amp;display=swap" rel="stylesheet"/>
+</h:head>
+
+<h:body>
+    <div class="main">
+        <!-- Sidebar Navigation -->
+        <div class="sideBar">
+            <ul>
+                <li><h:link value="Browse Services" outcome="servicePage.xhtml"/></li>
+                <li><h:link value="Book an appointment" outcome="petBooking.xhtml"/></li>
+                <li><A href="">Appointment History</A></li>
+                <li><A href="">My details</A></li>
+                <li><A href="">Pet details</A></li>
+                <li><h:link value="Settings" outcome="settings.xhtml" /></li>
+                <!-- Logout include as list item -->
+                <li><ui:include src="/WEB-INF/includes/logoutButton.xhtml"/></li>
+
+            </ul>
+
+        </div>
+
+        <!-- PAGE CONTENT -->
+        <div class="bookSystem">
+            <!-- Full-screen hero -->
+            <section class="hero">
+                <!-- Slideshow behind logo -->
+                <div class="hero-slideshow">
+                    <h:graphicImage library="images" name="slideshow/slideshow1.jpg" />
+                    <h:graphicImage library="images" name="slideshow/slideshow2.jpg" />
+                    <h:graphicImage library="images" name="slideshow/slideshow3.jpg" />
+                    <h:graphicImage library="images" name="slideshow/slideshow4.jpg" />
+                    <h:graphicImage library="images" name="slideshow/slideshow5.jpg" />
+                </div>
+
+                <!-- Slideshow behind logo -->
+                <div class="hero-overlay">
+                    <h:graphicImage library="images" name="logo.png" alt="Adam's Ark &amp; Avery" styleClass="heroLogo"/>
+                </div>
+
+                <div class="hero-inner">
+                    <h1>Welcome to Adam's Ark &amp; Avery</h1>
+                </div>
+            </section>
+
+            <!-- Your three blocks -->
+            <section class="content-blocks">
+                <div class="block block1">
+                    <h2>Our Mission</h2>
+                    <p>Provide specialized, compassionate boarding for every kind of pet—dogs, cats,
+                        birds, reptiles, small mammals, exotics, fish and amphibians—supported by a
+                        simple, secure system that works for customers, attendants and admins.</p>
+                </div>
+                <div class="block block2">
+                    <h2>What We Do</h2>
+                    <p>3A offers species‑tailored pods and optional extras like grooming, photo
+                        updates, playtime, customized diets, socialisation and care packages—so each
+                        pet enjoys a safe, enriched stay.</p>
+                </div>
+                <div class="block block3">
+                    <h2>Join Us</h2>
+                    <p>Register to browse services, book reservations and pay with PayPal. Pet
+                        attendants can access live care instructions; admins can update listings and
+                        pricing. The platform is built to scale with future expansion.</p>
+                </div>
+            </section>
+
+            <footer class="site-footer">
+                <p> 2025 Adam's Ark &amp; Avery. All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+</h:body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>Slide Register / Login</title>
+    <!-- Stylesheets -->
+    <h:outputStylesheet library="css" name="styles.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&amp;display=swap" rel="stylesheet"/>
+</h:head>
+
+<h:body>
+    <div class="main">
+
+        <p:growl id="growl" showDetail="true" sticky="false" life="4000" />
+
+        <!-- checkbox that toggles the sliding panels -->
+        <h:selectBooleanCheckbox id="chk" value="#{loginBean.showLogin}"
+                                 style="display:none"/>
+
+
+
+        <!-- Sign-up panel -->
+        <div class="signup">
+            <h:form>
+
+
+                <label for="chk" aria-hidden="true" class="panel-title">Sign up</label>
+
+                <div class="form-content">
+                    <p:inputText id="username" value="#{registrationBean.username}" placeholder="Username"
+                                 required="true" styleClass="textbox"/>
+                    <p:inputText id="email" value="#{registrationBean.email}" placeholder="Email" required="true"
+                                 styleClass="textbox"/>
+                    <p:password id="password" value="#{registrationBean.password}" placeholder="Password"
+                                required="true" styleClass="textbox"/>
+                    <p:password id="confirmPassword" value="#{registrationBean.confirmPassword}" placeholder="Confirm Password"
+                                required="true" styleClass="textbox"/>
+
+                    <p:commandButton value="Sign up"
+                                     action="#{registrationBean.register()}" ajax="false"
+                                     styleClass="btn auth-submit"/>
+                </div>
+                <p class="auth-switch">
+                    <label for="chk" class="toggle-link">Already have an account? Login</label>
+                </p>
+            </h:form>
+        </div>
+
+        <!-- Login panel -->
+        <div class="login">
+            <h:form id="loginForm">
+
+                <label for="chk" aria-hidden="true" class="panel-title">Login</label>
+
+                <!-- flag that tells the next render that the login form is submitted -->
+                <input type="hidden" name="__showLogin" value="1"/>
+
+                <div class="form-content">
+                    <p:inputText id="loginEmail"
+                                 label="Email or Username"
+                                 placeholder="Email or Username"
+                                 value="#{loginBean.email}"
+                                 required="true"
+                                 styleClass="textbox"/>
+                    <p:password id="loginPassword"
+                                value="#{loginBean.password}"
+                                placeholder="Password"
+                                label="Password"
+                                required="true"
+                                styleClass="textbox"/>
+
+                    <p:commandButton value="Login"
+                                     id="loginBtn"
+                                     action="#{loginBean.login}"
+                                     ajax="true"
+                                     process="@form"
+                                     update="growl @form"
+                                     styleClass="btn auth-submit"/>
+                </div>
+
+                <p class="auth-switch">
+                    <label for="chk" class="toggle-link">Don’t have an account? Sign up</label>
+                </p>
+            </h:form>
+        </div>
+    </div>
+</h:body>
+</html>

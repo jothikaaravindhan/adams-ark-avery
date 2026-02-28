@@ -1,0 +1,261 @@
+@import url("#{resource['css/customerBrand.css']}");
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Jost', sans-serif;
+    background: linear-gradient(to bottom, #C97064, #32965D, #68A357);
+}
+
+.main {
+    width: 350px;
+    height: 500px;
+    background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/...") no-repeat center/cover;
+    border-radius: 10px;
+    box-shadow: 5px 20px 50px #000;
+    overflow: hidden;
+    position: relative;
+}
+
+#chk {
+    display: none;
+}
+
+.signup,
+.login {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding-top: 30px;
+    box-sizing: border-box;
+    transition: 0.8s ease-in-out;
+}
+
+/* Matching heading styles for both forms */
+.signup label,
+.login label {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 40px 0 20px;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+/* Separate color for each form */
+.signup label {
+    color: #fff;
+}
+
+.login label {
+    color: #573b8a;
+}
+
+
+/* Toggle panels */
+[id$="chk"]:checked ~ .signup { transform: translateY(-100%); z-index: 1; }
+[id$="chk"]:checked ~ .login  { transform: translateY(0);      z-index: 2; }
+
+/* Title animation */
+[id$="chk"]:checked ~ .signup .panel-title { transform: scale(.6); }
+[id$="chk"]:checked ~ .login  .panel-title { transform: scale(1);  }
+
+
+
+.login {
+    background: #eee;
+    border-radius: 60% / 10%;
+    transform: translateY(100%);
+    transition: 0.8s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 30px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+/* Sign Up Starts On Top */
+.signup {
+    z-index: 2;
+}
+
+/* Input Styling */
+input,
+.ui-inputfield {
+    width: 60%;
+    background: #e0dede;
+    margin: 20px auto;
+    padding: 12px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box
+}
+
+
+/* Button Styling */
+button,
+.ui-button,
+.btn {
+    width: 60%;
+    height: 40px;
+    margin: 30px auto 10px;
+    display: block;
+    color: #fff !important;
+    background: #573b8a !important;
+    font-size: 1em;
+    font-weight: bold;
+    border: none !important;
+    border-radius: 5px;
+    transition: 0.2s ease-in;
+    cursor: pointer;
+    text-align: center;
+}
+
+button:hover,
+.ui-button:hover {
+    background: #6d44b8 !important;
+}
+
+/* Toggle Link Styling */
+.toggle-link {
+    display: block;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.signup .toggle-link {
+    color: #fff;
+}
+
+.login .toggle-link {
+    color: #573b8a;
+}
+
+/* Used to realign off Centered Text Input Boxes
+ */
+.form-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.error {
+    color: #fff;
+    background: #e44;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px auto;
+    text-align: center;
+    font-weight: bold;
+    width: 80%;
+    box-sizing: border-box;
+}
+
+.ui-dialog .ui-dialog-content{
+    text-align: center;
+    font-weight: bold;
+}
+
+/* ONLY the big titles (Sign up / Login) */
+.panel-title{
+    display:block;
+    width:100%;
+    text-align:center;
+    font-size:2.5em;
+    font-weight:bold;
+    margin:40px 0 20px;
+    transition:.5s ease-in-out;
+    cursor:pointer;
+}
+
+/* Animate titles when sliding, not the toggle links */
+#chk:checked ~ .signup .panel-title { transform: scale(.6); }
+#chk:checked ~ .login  .panel-title { transform: scale(1);  }
+
+/* Keep toggle labels a normal size and unscaled */
+.auth-switch .toggle-link,
+.toggle-link{
+    font-size:1.2em !important;
+    font-weight:bold !important;
+    line-height:1.3 !important;
+    transform:none !important;
+}
+
+/* Default spacing */
+.signup, .login { padding-top: 30px; }
+
+/* top-center growl; doesn’t affect layout */
+.ui-growl { top:20px !important; left:50% !important; transform:translateX(-50%); z-index:9999; }
+
+/* All of the CSS below this line is used for fixing the "Error Message" spacing bug, don't change anything */
+.main{
+    width: 350px;
+    /* was: height: 500px; */
+    min-height: 520px;   /* grow if needed */
+    height: auto;        /* avoid clipping */
+    background: none;
+    border-radius: 10px;
+    box-shadow: 5px 20px 50px #000;
+    overflow: hidden;
+    position: relative;
+}
+
+.signup, .login{
+    /* was: padding-top: 30px; */
+    padding: 30px 0 72px;  /* top | sides | bottom */
+}
+
+
+.form-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;          /* space between children */
+}
+
+input, .ui-inputfield{
+    width: 60%;
+    background: #e0dede;
+    margin: 0 auto;     /* horizontal center; no vertical margins */
+    padding: 12px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.btn{
+    width: 60%;
+    height: 40px;
+    margin: 8px auto 0; /* small gap above; rest via .form-content gap */
+    display: block;
+    color: #fff !important;
+    background: #573b8a !important;
+    font-size: 1em;
+    font-weight: bold;
+    border: none !important;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+    text-align: center;
+}

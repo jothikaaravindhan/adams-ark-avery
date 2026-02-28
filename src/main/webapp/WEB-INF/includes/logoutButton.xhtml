@@ -1,0 +1,24 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:link value="Logout" action="#{LogoutBean.logout}"
+		onclick="PF('logoutDialog').show(); return false;" />
+
+	<h:form>
+		<!-- Confirmation Dialog -->
+		<p:confirmDialog widgetVar="logoutDialog" header="Confirm Logout"
+			message="Are you sure you want to logout?" severity="warn"
+			appendTo="@(body)">
+
+			<p:commandButton value="Yes" icon="pi pi-check"
+				action="#{LogoutBean.logout}" oncomplete="PF('logoutDialog').hide()" />
+
+			<p:commandButton value="No" icon="pi pi-times"
+				onclick="PF('logoutDialog').hide(); return false;" type="button"
+				styleClass="ui-button-secondary" />
+		</p:confirmDialog>
+	</h:form>
+
+</ui:composition>

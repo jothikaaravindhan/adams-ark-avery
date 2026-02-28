@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+    <title>Settings – Adam's Ark &amp; Avery</title>
+    <!-- reuse your existing stylesheet -->
+    <h:outputStylesheet library="css" name="settings.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&amp;display=swap" rel="stylesheet" />
+    <style>
+        .placeholder.card { max-width: 720px; margin: 24px auto; padding: 20px; border-radius: 12px;
+            background: #fff; box-shadow: 0 6px 18px rgba(0,0,0,.08); }
+        .placeholder h2 { margin: 0 0 8px; }
+        .placeholder p  { margin: 0 0 12px; color: #555; }
+        .link-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+        .link-list li a { display: inline-block; padding: 8px 12px; border-radius: 8px; text-decoration: none; }
+    </style>
+</h:head>
+
+<h:body>
+    <div class="main">
+
+        <!-- Sidebar Navigation-->
+        <div class="sideBar">
+            <ul>
+                <li><A href="homepage.xhtml">Home</A></li>
+                <li><h:link value="Browse Services" outcome="servicePage.xhtml"/></li>
+                <li><h:link value="Book an appointment" outcome="petBooking.xhtml"/></li>
+                <li><A href="">Appointment History</A></li>
+                <li><A href="">My details</A></li>
+                <li><A href="">Pet details</A></li>
+                <!-- Logout include as list item -->
+                <li><ui:include src="/WEB-INF/includes/logoutButton.xhtml"/></li>
+
+            </ul>
+
+        </div>
+
+        <!-- Page Content -->
+        <div class="bookSystem">
+            <section class="hero" style="text-align:center;">
+                <div>
+                    <h:graphicImage library="images" name="underconstruction.png" alt="Adam's Ark &amp; Avery logo"/>
+                </div>
+                <h1>Account Settings</h1>
+
+                <div class="container">
+                    <div class="placeholder card">
+                        <h2>Coming Soon</h2>
+                        <p>We’re preparing account settings for customers. In the meantime, use the links below:</p>
+                        <ul class="link-list">
+                            <li><h:link value="Go to Home"            outcome="homepage.xhtml" /></li>
+                            <li><h:link value="Browse Services"       outcome="servicePage.xhtml" /></li>
+                            <li><h:link value="View My Bookings"      outcome="petBooking.xhtml" /></li>
+                            <li><h:link value="Edit My Profile"       outcome="profile.xhtml" /></li>
+                            <li><h:link value="Manage My Pets"        outcome="pets.xhtml" /></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="site-footer">
+                <p>2025 Adam's Ark &amp; Avery. All rights reserved.</p>
+            </footer>
+        </div>
+
+    </div>
+</h:body>
+</html>
