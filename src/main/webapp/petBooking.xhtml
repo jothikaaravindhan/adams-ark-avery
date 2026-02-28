@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>Pet Booking Page</title>
+    <h:outputStylesheet library="css" name="petBooking.css"/>
+
+</h:head>
+<h:body>
+    <div class="main">
+    	<div class="sideBar">
+    		<ul>
+	    		<li><A href="homepage.xhtml">Home</A></li>
+	    		<li><h:link value="Browse Services" outcome="servicePage.xhtml"/></li>
+	    		<li><A href="">Appointment History</A></li>
+	    		<li><A href="">My details</A></li>
+	    		<li><A href="">Pet details</A></li>
+	    		<li><A href="settings.xhtml">Settings</A></li>
+	    		<!-- Logout include as list item -->
+				<li><ui:include src="/WEB-INF/includes/logoutButton.xhtml"/></li>
+	    	</ul>
+    	</div>
+    	
+    	
+    	<div class="bookSystem">
+    		<div class="appointment">
+    			<h1>Book new appointment</h1>
+	    		<p>Please note If you are unable to find a service that suits you, please contact us in-hotel directly.</p>
+	    		<p>If you are unable to find a check-in time that suits you, please contact us in-hotel directly to be added to our cancellation list.</p>
+	    		
+	    		<h2>Pet Details</h2>
+	    		<h:form id="booking">
+		        	<h:dataTable value="#{bookingStore.allBookings}" var="booking" border="1" cellpadding="5">
+		
+		            <h:column>
+		                <f:facet name="header">Owner Name</f:facet>
+		                #{booking.ownerName}
+		            </h:column>
+		
+		            <h:column>
+		                <f:facet name="header">Pet Name</f:facet>
+		                #{booking.petName}
+		            </h:column>
+		
+		            <h:column>
+		                <f:facet name="header">Pet Type</f:facet>
+		                #{booking.petType}
+		            </h:column>
+		
+		            <h:column>
+		                <f:facet name="header">Check-In</f:facet>
+		                <h:outputText value="#{booking.checkInDate}">
+		                    <f:convertDateTime pattern="yyyy-MM-dd" />
+		                </h:outputText>
+		            </h:column>
+		
+		            <h:column>
+		                <f:facet name="header">Check-Out</f:facet>
+		                <h:outputText value="#{booking.checkOutDate}">
+		                    <f:convertDateTime pattern="yyyy-MM-dd" />
+		                </h:outputText>
+		            </h:column>
+		
+		            <h:column>
+		                <f:facet name="header">Special Notes</f:facet>
+		                #{booking.specialNotes}
+		            </h:column>
+					
+					<h:column>
+		                <f:facet name="header">Operate</f:facet>
+		                
+		                <h:commandButton value="CHANGE" action="#{bookingBean.change}" styleClass="change"/>
+		            </h:column>
+		            
+		            
+		        	</h:dataTable>
+		        	
+					<h:commandButton value="ADD" action="#{bookingBean.add}" styleClass="green-confirm"/>
+	    		</h:form>
+	    		<br></br>
+	    		<h:form id="service">
+		    		<h2>Select Services Type</h2>
+					<h:selectManyCheckbox value="#{orderBean.selectedServices}">
+					    <f:selectItems value="#{orderBean.availableServices}" />
+					</h:selectManyCheckbox>
+			   		
+			   		<h:commandButton value="CONFIRM" action="#{orderBean.confirm}" styleClass="green-confirm"/>
+	        	</h:form>
+    		</div>
+    		
+    	</div>
+    </div>
+</h:body>
+</html>

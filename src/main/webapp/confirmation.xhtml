@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Pet Booking Confirmation Page</title>
+	<h:outputStylesheet library="css" name="confirmation.css" />
+	<link rel="icon" type="image/jpeg" href="#{resource['ark.jpg']}" />
+
+</h:head>
+<h:body>
+	<div class="Confirmation">
+		<h1>Confirmation</h1>
+		<p>Please read the booking information carefully and confirm:</p>
+
+		<h2>Pet Details</h2>
+		<h:form>
+		  <h:panelGrid columns="2" border="1" cellpadding="5">
+		    <h:outputText value="Owner Name:" />
+		    <h:outputText value="#{orderStore.order.booking.ownerName}" />
+		
+		    <h:outputText value="Pet Name:" />
+		    <h:outputText value="#{orderStore.order.booking.petName}" />
+		
+		    <h:outputText value="Pet Type:" />
+		    <h:outputText value="#{orderStore.order.booking.petType}" />
+		
+		    <h:outputText value="Check-In:" />
+		    <h:outputText value="#{orderStore.order.booking.checkInDate}">
+		      <f:convertDateTime pattern="yyyy-MM-dd"/>
+		    </h:outputText>
+		    
+		    <h:outputText value="Check-Out:" />
+		    <h:outputText value="#{orderStore.order.booking.checkOutDate}">
+		      <f:convertDateTime pattern="yyyy-MM-dd"/>
+		    </h:outputText>
+		    
+		    <h:outputText value="Special Notes:" />
+		    <h:outputText value="#{orderStore.order.booking.specialNotes}">
+		      
+		    </h:outputText>
+		    
+		    <h:outputText value="Services:" />
+		    <h:outputText value="#{orderStore.order.selectedServices}">
+		    
+		    </h:outputText>
+		    
+		    <h:outputText value="Total Price: " />
+		    <h:outputText value="#{orderStore.order.price}">
+		     
+		    </h:outputText>
+		  </h:panelGrid>
+		  
+		  <h:commandButton value="Pay" styleClass="button" action="#{paymentBean.createPayment}" />
+			
+          <h:commandButton value="Cancel" styleClass="button" action="#{orderBean.cancel}" />
+		  
+		</h:form>
+
+	</div>
+
+</h:body>
+</html>

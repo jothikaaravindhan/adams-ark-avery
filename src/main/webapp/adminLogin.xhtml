@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>Slide Register / Login</title>
+    <!-- Stylesheets -->
+    <h:outputStylesheet library="css" name="adminLogin.css"/>
+     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&amp;display=swap" rel="stylesheet"/>
+</h:head>
+
+<h:body>
+    <div class="main">
+
+        <!-- Popup dialog box for login notifications -->
+        <p:dialog id="errorMsgDialog"
+                  widgetVar="errorDialog"
+                  header="Notification"
+                  modal="true"
+                  closable="true"
+                  draggable="false"
+                  resizable="false"
+                  showEffect="fade"
+                  hideEffect="fade"
+                  appendTo="@(body)">
+            <h:outputText value="#{loginBean.message}" />
+        </p:dialog>
+
+        <div class="login">
+    <h:form>
+        <h2 class="panel-title">Admin Login</h2>
+
+        <div class="form-content">
+            <!-- Change id and value binding to adminBean.adminName -->
+            <p:inputText id="adminName" value="#{adminBean.adminName}" placeholder="Admin Name" required="true"
+                         styleClass="textbox"/>
+            
+            <!-- Bind password to adminBean.password -->
+            <p:password id="adminPassword" value="#{adminBean.password}" placeholder="Password"
+                        required="true" styleClass="textbox"/>
+
+            <!-- Bind commandButton action to adminBean.login -->
+            <p:commandButton value="Login"
+                             action="#{adminBean.login}"
+                             update="@form errorMsgDialog"
+                             oncomplete="if (!#{empty adminBean.message}) PF('errorDialog').show();"
+                             styleClass="btn"/>
+        </div>
+    </h:form>
+</div>
+    </div>
+</h:body>
+</html>

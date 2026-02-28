@@ -1,0 +1,192 @@
+
+:root{
+  --sidebar-width: 240px;
+  --bg: #f8fafc;
+  --text: #0f172a;
+  --muted: #334155;
+  --panel: #ffffff;
+  --panel-border: #e5e7eb;
+}
+
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", Roboto, Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+
+body > h1:first-of-type{
+  margin: 20px 0 8px;
+  margin-left: var(--sidebar-width);
+  padding-left: 24px;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+/* logo */
+.heroLogo{
+  position: fixed;
+  top: 12px;
+  right: 24px;
+  max-width: 180px;
+  height: auto;
+  z-index: 1001;
+  pointer-events: none;
+}
+
+/* side bar */
+.sideBar {
+    width: 220px;
+    background-color: #2B2D42;
+    padding: 20px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0; left: 0; height: 100vh;
+    box-shadow: 6px 0 18px rgba(0,0,0,.10);
+    border: none;
+}
+
+.sideBar ul { list-style: none; padding: 0; margin: 16px 0 0; }
+.sideBar li { margin-bottom: 12px; }
+
+.sideBar a {
+    display: block;
+    background-color: #8D99AE;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #1b1b1b;
+    font-weight: 700;
+    box-shadow: 0 2px 6px rgba(0,0,0,.08);
+    transition: transform .12s ease, background-color .2s ease;
+}
+.sideBar a:hover { background-color: #EAF5EE; transform: translateY(-1px); }
+
+.sidebar-button {
+    display: block;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    color: #1b1b1b;
+    font-weight: 700;
+    font-family: 'Jost', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    user-select: none;
+}
+
+.sidebar-button:hover,
+.sidebar-button:focus {
+    background-color: #EAF5EE;
+    box-shadow: 0 8px 18px rgba(50, 150, 93, 0.3);
+    transform: translateY(-2px);
+    outline: none;
+}
+
+.sidebar-button:active {
+    background-color: #d3e9d8;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+}
+
+
+/* ====== calendar ====== */
+.Calendar{
+  width: 1200px;
+  height: calc(100vh - 64px); 
+  margin-left: 400px;
+  padding: 0 24px 24px;
+  display: flex;
+  flex-direction: column;
+}
+.Calendar > h1{
+  margin: 8px 0 12px;
+  font-size: 22px;
+  color: var(--muted);
+}
+
+.Calendar .form{
+  flex: 1;                
+  display: flex;
+  flex-direction: column;
+  min-width: 0;           
+}
+
+.Calendar .form > table,
+.Calendar .form > .ui-panelgrid{
+  width: 100% !important;
+  height: 100% !important;
+  border-spacing: 0;
+  border: none;
+}
+
+/* ====== 
+.Calendar .form > table td,
+.Calendar .form > .ui-panelgrid td{
+  padding: 0 !important;
+  height: 100%;
+  width: 100%;
+}
+ ====== */
+ 
+.Calendar .ui-schedule,
+.Calendar .p-schedule{
+  width: 100% !important;
+  height: 100% !important;     
+  min-height: 680px;          
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: 0 8px 24px rgba(15,23,42,.06);
+}
+
+
+.Calendar .fc,
+.Calendar .fc-view-container,
+.Calendar .fc-view{
+  height: 100% !important;
+}
+.Calendar .fc-scroller,
+.Calendar .fc-time-grid-container,
+.Calendar .fc-day-grid-container{
+  height: calc(100% - 58px) !important; 
+  max-height: none !important;
+}
+
+.Calendar .fc-toolbar{ padding: 8px 12px; }
+.Calendar .fc-button{
+  border-radius: 8px !important;
+  border: 1px solid var(--panel-border) !important;
+  background: #fff !important;
+  color: var(--text) !important;
+}
+.Calendar .fc-button:hover{ background:#f1f5f9 !important; }
+.Calendar .fc-today{ background:#ecfeff !important; }
+.Calendar .fc-event{ border-radius: 8px; border:none; }
+
+
+@media (max-width: 900px){
+  :root{ --sidebar-width: 0px; }
+  body > h1:first-of-type{ margin-left: 0; padding-left: 16px; }
+  .sideBar{
+    position: static; width: 100%; height: auto;
+    padding: 12px 16px; box-shadow: none;
+    border-bottom: 1px solid #0b1221;
+  }
+  .sideBar ul{ margin: 0; display: flex; gap: 8px; flex-wrap: wrap; }
+  .Calendar{
+    width: 100vw; margin-left: 0; height: calc(100vh - 120px);
+    padding: 12px 16px 16px;
+  }
+  .heroLogo{ right: 12px; top: 10px; max-width: 120px; }
+  .ui-growl{ right: 12px !important; top: 76px !important; }
+}

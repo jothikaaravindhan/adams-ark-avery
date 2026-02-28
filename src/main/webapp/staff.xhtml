@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<title>Home - Adam's Ark &amp; Avery</title>
+	<h:outputStylesheet library="css" name="staffHome.css" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Jost:wght@500&amp;display=swap"
+		rel="stylesheet" />
+</h:head>
+
+<<<<<<< HEAD
+        <!-- Sidebar Navigation -->
+        <div class="sideBar">
+         <ul>
+	    		<li><h:link value="Calendar" outcome="viewFeeding.xhtml"/></li>
+	    		<li><h:link value="viewPets" outcome="viewPets.xhtml"/></li>
+	    		<li><h:link value="Pet Instructions" outcome="petInstructions.xhtml"/></li>
+	    		<li><A href="">Settings</A></li>
+				<li><ui:include src="/WEB-INF/includes/logoutButton.xhtml"/></li>
+	    	</ul>
+        </div>
+=======
+<h:body>
+	<div class="main">
+>>>>>>> bfc8385 (Add Pet Filter page and update sidebar navigation)
+
+		<!-- Sidebar Navigation -->
+		<div class="sideBar">
+			<ul>
+				<li><h:link value="Pet Calendar" outcome="servicePage.xhtml" /></li>
+				<li><a href="#">Settings</a></li>
+				<li><h:link value="Pet Filter" outcome="viewPets.xhtml" /></li>
+				<li><ui:include src="/WEB-INF/includes/logoutButton.xhtml" /></li>
+			</ul>
+		</div>
+
+		<!-- PAGE CONTENT -->
+		<div class="bookSystem">
+			<section class="hero">
+				<div>
+					<h:graphicImage library="images" name="staff.png" />
+				</div>
+
+				<!-- PA Care: Currently Boarding -->
+				<div class="container">
+					<h:form id="paCare" styleClass="stack">
+
+						<h:messages id="msgs" styleClass="messages" />
+
+						<h2 class="section-title">Active &amp; Upcoming Bookings</h2>
+
+						<!-- LIST -->
+						<h:panelGroup id="listPanel" layout="block">
+							<h:dataTable value="#{paCareBean.active}" var="p"
+								styleClass="table">
+								<h:column>
+									<f:facet name="header">Owner</f:facet>
+                      #{p.ownerName}
+                    </h:column>
+								<h:column>
+									<f:facet name="header">Pet</f:facet>
+                      #{p.petName} (#{p.petType})
+                    </h:column>
+								<h:column>
+									<f:facet name="header">Check-In</f:facet>
+									<h:outputText value="#{p.checkInDate}">
+										<f:convertDateTime pattern="yyyy-MM-dd" />
+									</h:outputText>
+								</h:column>
+								<h:column>
+									<f:facet name="header">Check-Out</f:facet>
+									<h:outputText value="#{p.checkOutDate}">
+										<f:convertDateTime pattern="yyyy-MM-dd" />
+									</h:outputText>
+								</h:column>
+								<h:column>
+									<h:commandButton value="View" styleClass="btn"
+										action="#{paCareBean.select(p)}">
+
+										<f:ajax execute="@this"
+											render=":paCare:msgs :paCare:detailsArea" />
+									</h:commandButton>
+								</h:column>
+							</h:dataTable>
+
+							<h:panelGroup rendered="#{empty paCareBean.active}"
+								styleClass="empty">
+								<h:outputText value="No active or upcoming bookings." />
+							</h:panelGroup>
+						</h:panelGroup>
+
+						<!-- DETAILS -->
+						<h:panelGroup id="detailsArea" layout="block">
+							<h:panelGroup layout="block" styleClass="card"
+								rendered="#{not empty paCareBean.selected}">
+								<h3 class="card-title">#{paCareBean.selected.petName} —
+									Details</h3>
+
+								<ul class="meta">
+									<li><strong>Owner:</strong>
+										#{paCareBean.selected.ownerName}</li>
+									<li><strong>Type:</strong> #{paCareBean.selected.petType}</li>
+									<li><strong>Stay:</strong> <h:outputText
+											value="#{paCareBean.selected.checkInDate}">
+											<f:convertDateTime pattern="yyyy-MM-dd" />
+										</h:outputText> <h:outputText value="#{paCareBean.selected.checkOutDate}">
+											<f:convertDateTime pattern="yyyy-MM-dd" />
+										</h:outputText></li>
+								</ul>
+
+								<h4>Care Instructions</h4>
+								<h:panelGroup rendered="#{paCareBean.hasCareInstructions}">
+									<pre class="notes">#{paCareBean.selected.specialNotes}</pre>
+								</h:panelGroup>
+								<h:panelGroup rendered="#{not paCareBean.hasCareInstructions}">
+									<p class="muted">No care instructions are available for
+										this pet.</p>
+								</h:panelGroup>
+							</h:panelGroup>
+						</h:panelGroup>
+
+					</h:form>
+				</div>
+			</section>
+
+			<footer class="site-footer">
+				<p>2025 Adam's Ark &amp; Admin. All rights reserved.</p>
+			</footer>
+		</div>
+
+	</div>
+</h:body>
+</html>

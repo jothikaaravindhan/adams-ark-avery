@@ -1,0 +1,123 @@
+@import url("#{resource['css/customerBrand.css']}");
+
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px;
+    background-color: var(--bg-page);
+    min-height: 100vh;
+    font-family: 'Jost', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.petForm {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 500px;
+}
+
+.petForm h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--brand-deep-green);
+    text-align: center;
+}
+
+.petForm table {
+    width: 100%;
+    font-size: 16px;
+}
+
+.petForm td {
+    padding: 10px;
+}
+
+.petForm input[type="text"],
+.petForm textarea,
+.petForm select {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.petForm textarea {
+    resize: vertical;
+}
+
+.petForm input[type="submit"],
+.petForm button,
+.petForm .ui-commandbutton {
+    background-color: var(--btn-primary);
+    color: white;
+    padding: 10px 18px;
+    font-size: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+    display: inline-block;
+}
+
+.petForm input[type="submit"]:hover,
+.petForm button:hover {
+    background-color: var(--btn-primary-hover);
+}
+
+.petForm input[type="date"] {
+
+    width: 100%;
+    padding: 8px 40px 8px 10px;  
+    font-size: 15px;
+    line-height: 1.4;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+
+
+    background-color: #fff;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 11H9V13H7V11ZM11 11H13V13H11V11ZM15 11H17V13H15V11Z' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M3 4H21V20H3V4Z' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M16 2V6M8 2V6' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px 16px;
+
+
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+}
+
+
+.petForm input[type="date"]:focus {
+    border-color: var(--btn-primary);
+    outline: none;
+    box-shadow: 0 0 5px rgba(50, 150, 93, 0.5); /* match deep green hue */
+}
+
+
+.petForm input[type="date"]::-webkit-clear-button,
+.petForm input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+
+.petForm input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0.8;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+.petForm input[type="date"]::-moz-calendar-picker-indicator {
+    opacity: 0.8;
+    cursor: pointer;
+}

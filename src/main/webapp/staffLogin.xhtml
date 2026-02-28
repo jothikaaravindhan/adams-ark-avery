@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>Staff Login</title>
+    <h:outputStylesheet library="css" name="staff.css"/>
+
+    <style>
+        .login{
+            position: relative;
+            transform: none;
+            background: #eee;
+            border-radius: 10px;
+        }
+        /* give a bit more room above the button */
+        .form-content .btn { margin-top: 16px; }
+        /* styling for bean message */
+        .error-msg {
+            color: #b00020;
+            background: #fce4ec;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 0 auto 15px;
+            width: 80%;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <div class="main">
+        <div class="login">
+            <h:form id="staffLoginForm">
+                <label class="panel-title">Staff Login</label>
+
+                <!-- show “Invalid email or password.” -->
+                <h:panelGroup rendered="#{not empty paLoginBean.message}">
+                    <div class="error-msg">
+                        <h:outputText value="#{paLoginBean.message}"/>
+                    </div>
+                </h:panelGroup>
+
+                <!-- show required/validation messages such as “Email is required” -->
+                <p:messages id="loginMsgs" showDetail="true" showIcon="true" closable="true"/>
+
+                <div class="form-content">
+                    <p:inputText id="email"
+                                 value="#{paLoginBean.email}"
+                                 placeholder="Email"
+                                 required="true"
+                                 requiredMessage="Email is required"
+                                 styleClass="textbox"/>
+
+                    <p:password id="password"
+                                value="#{paLoginBean.password}"
+                                placeholder="Password"
+                                required="true"
+                                requiredMessage="Password is required"
+                                styleClass="textbox"/>
+
+                    <!-- full postback so navigation works -->
+                    <p:commandButton value="Login"
+                                     action="#{paLoginBean.login}"
+                                     ajax="false"
+                                     styleClass="btn"/>
+                </div>
+            </h:form>
+        </div>
+    </div>
+</h:body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    
+<h:head>
+    <title>Pet Details Page</title>
+	  <h:outputStylesheet library="css" name="petDetails.css"/>
+	  
+</h:head>
+<h:body>
+    <div class="main">
+    	<div class="petForm">
+    		<h:form>
+		        <h2>Pet Booking Form</h2>
+		
+		        <h:panelGrid columns="2" cellpadding="5">
+		
+		            <h:outputLabel for="ownerName" value="Your Name:" />
+		            <h:inputText id="ownerName" value="#{bookingBean.ownerName}" required="true" requiredMessage="Name is required" />
+		
+		            <h:outputLabel for="petName" value="Pet Name:" />
+		            <h:inputText id="petName" value="#{bookingBean.petName}" required="true" requiredMessage="Pet name is required" />
+		
+		            <h:outputLabel for="petType" value="Pet Type:" />
+		            <h:selectOneMenu id="petType" value="#{bookingBean.petType}" required="true" requiredMessage="Pet type is required">
+		                <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true"/>
+		                <f:selectItem itemLabel="Dog" itemValue="Dog" />
+		                <f:selectItem itemLabel="Cat" itemValue="Cat" />
+		                <f:selectItem itemLabel="Bird" itemValue="Bird" />
+		                <f:selectItem itemLabel="Reptile" itemValue="Reptile" />
+		                <f:selectItem itemLabel="Exotic Pet" itemValue="Exotic" />
+		                <f:selectItem itemLabel="Fish" itemValue="Fish" />
+		                <f:selectItem itemLabel="Amphibian" itemValue="Amphibian" />
+		                <f:selectItem itemLabel="Small mammal" itemValue="Small" />
+		            </h:selectOneMenu>
+		
+		            <h:outputLabel for="checkin" value="Check-In Date:" />
+					<h:inputText id="checkin"
+					             value="#{bookingBean.checkInDate}"
+					             required="true"
+					             requiredMessage="Check-in date is required.">
+						<f:convertDateTime pattern="yyyy-MM-dd"/>
+						  
+						<f:passThroughAttribute name="type" value="date"/>
+					</h:inputText>
+					
+					<h:outputLabel for="checkout" value="Check-Out Date:" />
+					<h:inputText id="checkout"
+					             value="#{bookingBean.checkOutDate}"
+					             required="true"
+					             requiredMessage="Check-out date is required.">
+						<f:convertDateTime pattern="yyyy-MM-dd"/>
+						<f:passThroughAttribute name="type" value="date"/>
+					</h:inputText>
+		
+		            <h:outputLabel for="notes" value="Special Requirements:" />
+		            <h:inputTextarea id="notes" value="#{bookingBean.specialNotes}" rows="4" cols="30"/>
+		
+		        </h:panelGrid>
+		
+		        <br/>
+		        <h:commandButton value="Submit Booking" action="#{bookingBean.submit}" />
+		        <h:messages globalOnly="true" style="color:red"/>
+		
+		    </h:form>
+    	</div>
+    </div>
+</h:body>
+</html>
